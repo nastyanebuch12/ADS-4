@@ -35,8 +35,7 @@ bool binsearch(int* arr, int left, int right, int val) {
         firstOccurrence = middle;
       }
       high = middle - 1;
-    }
-    else {
+    } else {
       low = middle + 1;
     }
   }
@@ -50,8 +49,7 @@ bool binsearch(int* arr, int left, int right, int val) {
         lastOccurrence = middle;
       }
       low = middle + 1;
-    }
-    else {
+    } else {
       high = middle - 1;
     }
   }
