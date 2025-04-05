@@ -25,13 +25,13 @@ int countPairs2(int *arr, int len, int value) {
   }
   return count;
 }
-bool binsearch(int* arr, int left, int right, int val) {
+int binSearch(int* array, int start, int end, int val) {
   int firstOccurrence = -1, lastOccurrence = -1;
-  int low = left, high = right;
+  int low = start, high = end;
   while (low <= high) {
     int middle = low + (high - low) / 2;
-    if (arr[middle] >= val) {
-      if (arr[middle] == val) {
+    if (array[middle] >= val) {
+      if (array[middle] == val) {
         firstOccurrence = middle;
       }
       high = middle - 1;
@@ -41,11 +41,11 @@ bool binsearch(int* arr, int left, int right, int val) {
   }
   if (firstOccurrence == -1) return 0;
   low = firstOccurrence;
-  high = right;
+  high = end;
   while (low <= high) {
     int middle = low + (high - low) / 2;
-    if (arr[middle] <= val) {
-      if (arr[middle] == val) {
+    if (array[middle] <= val) {
+      if (array[middle] == val) {
         lastOccurrence = middle;
       }
       low = middle + 1;
@@ -55,10 +55,10 @@ bool binsearch(int* arr, int left, int right, int val) {
   }
   return (lastOccurrence - firstOccurrence) + 1;
 }
-int countPairs3(int *arr, int len, int value) {
+int countPairs3(int* arr, int len, int value) {
   int pairs = 0;
   for (int i = 0; i < len; i++) {
-    pairs += binsearch(arr, i + 1, len - 1, value - arr[i]);
+    pairs += binSearch(arr, i + 1, len - 1, value - arr[i]);
   }
   return pairs;
 }
